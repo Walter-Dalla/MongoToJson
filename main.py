@@ -11,23 +11,18 @@ def sort_json(obj):
     else:
         return obj
 
-# Regular expression to remove the keys
+# Regular expression to remove the mongo keys
 key_regex = r'(NUUID|ISODate|NumberLong|\(|\)|)|Date'
 
-# Load the first JSON object
 with open('local.json', 'r') as f:
     json_string = f.read()
-    # Remove the keys from the JSON string
     cleaned_json_string = re.sub(key_regex, '', json_string)
-    # Load the JSON object
     data1 = json.loads(cleaned_json_string)
 
-# Load the second JSON object
+
 with open('dev.json', 'r') as f:
     json_string = f.read()
-    # Remove the keys from the JSON string
     cleaned_json_string = re.sub(key_regex, '', json_string)
-    # Load the JSON object
     data2 = json.loads(cleaned_json_string)
 
 # Sort the keys of each JSON object and its nested objects and arrays
